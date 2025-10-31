@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>餐飲管理系統後台儀表板</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <link rel="stylesheet" href="樣式.css">
+</head>
+<body>
+    <div class="容器">
+        <!-- 頁首 -->
+        <header class="頁首">
+            <h1>🍽️ 餐飲管理系統後台儀表板</h1>
+            <div class="日期選擇器">
+                <label>時間範圍：</label>
+                <select id="時間範圍" onchange="更新所有資料()">
+                    <option value="7">最近 7 天</option>
+                    <option value="30" selected>最近 30 天</option>
+                    <option value="90">最近 90 天</option>
+                </select>
+
+                <label style="margin-left: 20px;">分組方式：</label>
+                <select id="分組方式" onchange="更新銷售圖表()">
+                    <option value="日" selected>每日</option>
+                    <option value="週">每週</option>
+                    <option value="月">每月</option>
+                    <option value="季">每季</option>
+                    <option value="年">每年</option>
+                </select>
+            </div>
+        </header>
+
+        <!-- 總覽卡片 -->
+        <section class="總覽區">
+            <div class="卡片">
+                <div class="卡片圖示">📊</div>
+                <div class="卡片內容">
+                    <h3>總訂單數</h3>
+                    <p class="數字" id="總訂單數">-</p>
+                </div>
+            </div>
+
+            <div class="卡片">
+                <div class="卡片圖示">💰</div>
+                <div class="卡片內容">
+                    <h3>總營收</h3>
+                    <p class="數字" id="總營收">-</p>
+                </div>
+            </div>
+
+            <div class="卡片">
+                <div class="卡片圖示">📈</div>
+                <div class="卡片內容">
+                    <h3>平均客單價</h3>
+                    <p class="數字" id="平均客單價">-</p>
+                </div>
+            </div>
+
+            <div class="卡片">
+                <div class="卡片圖示">👥</div>
+                <div class="卡片內容">
+                    <h3>消費會員數</h3>
+                    <p class="數字" id="消費會員數">-</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 圖表區域 -->
+        <div class="圖表區">
+            <!-- 銷售趨勢 -->
+            <div class="圖表容器 大">
+                <h2>📈 銷售趨勢分析</h2>
+                <canvas id="銷售趨勢圖"></canvas>
+            </div>
+
+            <!-- 訂單類型分布 -->
+            <div class="圖表容器 中">
+                <h2>🥘 訂單類型分布</h2>
+                <canvas id="訂單類型圖"></canvas>
+            </div>
+
+            <!-- 熱門時段 -->
+            <div class="圖表容器 大">
+                <h2>⏰ 熱門時段分析</h2>
+                <canvas id="熱門時段圖"></canvas>
+            </div>
+
+            <!-- 熱門菜品 -->
+            <div class="圖表容器 中">
+                <h2>🌟 熱門菜品排行</h2>
+                <canvas id="熱門菜品圖"></canvas>
+            </div>
+
+            <!-- 菜品分類 -->
+            <div class="圖表容器 中">
+                <h2>🍱 菜品分類銷售</h2>
+                <canvas id="分類銷售圖"></canvas>
+            </div>
+
+            <!-- 翻桌率 -->
+            <div class="圖表容器 中">
+                <h2>🪑 翻桌率分析</h2>
+                <div id="翻桌率內容" class="統計內容"></div>
+            </div>
+        </div>
+
+        <!-- 會員分析表格 -->
+        <section class="表格區">
+            <h2>👑 Top 10 會員消費排行</h2>
+            <table id="會員表格">
+                <thead>
+                    <tr>
+                        <th>排名</th>
+                        <th>姓名</th>
+                        <th>會員等級</th>
+                        <th>消費次數</th>
+                        <th>總消費金額</th>
+                        <th>平均消費</th>
+                        <th>最後消費時間</th>
+                    </tr>
+                </thead>
+                <tbody id="會員表格內容">
+                    <tr><td colspan="7">載入中...</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 人力與備料建議 -->
+        <section class="建議區">
+            <div class="建議卡片">
+                <h2>👨‍🍳 人力配置建議</h2>
+                <div id="人力建議內容" class="建議內容">載入中...</div>
+            </div>
+
+            <div class="建議卡片">
+                <h2>🥬 食材備料建議</h2>
+                <div id="備料建議內容" class="建議內容">載入中...</div>
+            </div>
+        </section>
+    </div>
+
+    <script src="主程式.js"></script>
+</body>
+</html>

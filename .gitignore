@@ -1,0 +1,26 @@
+# 依賴套件
+node_modules/
+
+# 資料庫檔案
+後端/餐飲系統.db
+後端/*.db
+
+# 系統檔案
+.DS_Store
+Thumbs.db
+
+# 編輯器
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# 日誌
+*.log
+npm-debug.log*
+
+# 環境變數
+.env
+.env.local
+.env.*.local

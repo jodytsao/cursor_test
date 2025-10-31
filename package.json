@@ -1,0 +1,31 @@
+{
+  "name": "餐飲管理分析系統",
+  "version": "1.0.0",
+  "description": "餐飲管理系統後台儀表板 - 分析POS資料，包括會員、桌邊點餐、線上點餐、外帶及訂位",
+  "main": "後端/伺服器.js",
+  "scripts": {
+    "後端": "node 後端/伺服器.js",
+    "開發": "concurrently \"npm run 後端\" \"npm run 前端\"",
+    "前端": "cd 前端 && npm start",
+    "安裝全部": "npm install && cd 前端 && npm install",
+    "建立資料": "node 後端/建立示例資料.js",
+    "server": "node 後端/伺服器.js",
+    "seed": "node 後端/建立示例資料.js"
+  },
+  "keywords": [
+    "餐飲",
+    "分析",
+    "儀表板",
+    "POS"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "sqlite3": "^5.1.6"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
